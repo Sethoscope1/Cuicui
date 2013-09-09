@@ -21,7 +21,20 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'oauth'
+# gem 'singleton'
 
+# gem 'yaml'
+require 'yaml'
+gem 'launchy'
+
+gem 'addressable'
+
+require 'addressable/uri'
+
+gem 'rest-client'
+
+gem 'json'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

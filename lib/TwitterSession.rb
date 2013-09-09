@@ -7,7 +7,7 @@ class TwitterSession
 
   attr_reader :access_token
 
-  include Singleton
+  # include Singleton
 
   CONSUMER_KEY = 'U2wzHinqT6H6lnFKuRhvw'
   CONSUMER_SECRET = 'otDUJCVwhZoxF830R8946EO8vvHmYeJdAaoTUocca8s'
@@ -15,8 +15,11 @@ class TwitterSession
   CONSUMER = OAuth::Consumer.new(
     CONSUMER_KEY, CONSUMER_SECRET, :site => "https://twitter.com")
 
+
+
   def initialize
-    @access_token = get_access_token
+    token_file = 'token_save.yaml'
+    @access_token = get_access_token(token_file)
   end
 
 
@@ -32,9 +35,8 @@ class TwitterSession
   end
 
 
-
   protected
-  def get_access_token
+  def get_access_token(token_file)
     if File.exist?(token_file)
       File.open(token_file) { |f| YAML.load(f) }
     else
